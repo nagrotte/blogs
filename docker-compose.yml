@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  backend:
+    build: ./blog-backend
+    ports:
+      - "3001:3001"
+    environment:
+      NEO4J_URI: "neo4j://neo4j:7687" # Change as needed
+      NEO4J_USER: neo4j # Change as needed
+      NEO4J_PASSWORD: Daylights#123 # Change as needed
+    command: sh -c "node index.js && echo Backend API running on http://localhost:3001"
+
+  neo4j:
+    build: ./neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: "neo4j/Daylights#123"
+    
+  
+  frontend:
+    build: ./blog-ui
+    ports:
+      - "4000:3000" # Change the port if needed
+

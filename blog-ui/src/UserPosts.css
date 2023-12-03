@@ -1,0 +1,34 @@
+/* UserPosts.css */
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .post {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .comments {
+    margin-top: 10px;
+  }
+  
+  .comments h3 {
+    margin-bottom: 5px;
+  }
+  
+  .comments ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .comments li {
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+  }
+  
+  /* Add more styles as needed */
+  
