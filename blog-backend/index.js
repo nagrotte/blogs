@@ -31,17 +31,25 @@ app.get('/users/posts', async (req, res) => {
        RETURN u, p, c`
     );
 
-    // Rest of your code with logging
-    // For instance:
-    logger.info('Successfully fetched posts and comments');
+    const records = result.records.map(record => {
+      return {
+        user: record.get('u').properties,
+        post: record.get('p').properties,
+        comment: record.get('c').properties
+      };
+    });
 
     await session.close();
+
+    res.json(records);
   } catch (error) {
     console.error('Error fetching posts and comments:', error);
     logger.error('Error fetching posts and comments:', error.message);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
